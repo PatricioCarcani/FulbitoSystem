@@ -28,6 +28,7 @@ public class PersonaRestController {
 	public List<Persona> listar(){
 		return personaService.listar();		
 	}
+<<<<<<< HEAD
 
 	@GetMapping("/personas/{id}")
 	@ResponseStatus(HttpStatus.OK) //devuelve un response 200
@@ -67,4 +68,15 @@ public class PersonaRestController {
 		
 	}
 	
+=======
+	/*
+	 * INSERT INTO public.persona(
+	nombre, apellido, tipo_dni, dni, sexo, fecha_nacimiento)
+	VALUES ('pepe', 'pateatraseros', 'DNI', '33460632', 'si por favor', '19/07/1988');
+	 */
+	
+	/*
+	 * prueba
+	 * */
+>>>>>>> 2da91c136c2e422fbfc1582ef6fd1256d6a8acfb
 }
