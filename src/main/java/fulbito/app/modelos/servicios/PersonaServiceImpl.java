@@ -1,4 +1,4 @@
-package fulbito.app.models.services;
+package fulbito.app.modelos.servicios;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fulbito.app.models.dao.IPersonaDao;
-import fulbito.app.models.entity.Persona;
+import fulbito.app.modelos.dao.IPersonaDao;
+import fulbito.app.modelos.entidades.Persona;
 
 @Service
 public class PersonaServiceImpl implements IPersonaService{

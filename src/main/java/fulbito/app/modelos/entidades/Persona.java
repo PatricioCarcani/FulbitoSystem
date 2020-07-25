@@ -1,4 +1,4 @@
-package fulbito.app.models.entity;
+package fulbito.app.modelos.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
