@@ -26,5 +26,8 @@ public class PersonaRestController {
 	nombre, apellido, tipo_dni, dni, sexo, fecha_nacimiento)
 	VALUES ('pepe', 'pateatraseros', 'DNI', '33460632', 'si por favor', '19/07/1988');
 	 */
-
+	
+	/*
+	 * prueba
+	 * */
 }
