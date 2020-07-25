@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,7 +36,31 @@ public class Persona implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
+	/**
+	 * Para evitar crear la fecha al momento de crear el objeto en la BD
+	 */
+	/* ESTO SE USA EN FECHA ULTIMA MODIFICACION DE USUARIO
+	@PrePersist	
+	public void prePersist() {
+		fechaNacimiento = new Date();
+	}
+	*/
 	
+	public Persona() {}
+
+	// constructor para el INSERT. no lleva atributo ID porque se crea en la bd
+	public Persona(String nombre, String apellido, String tipoDni, String dni, String sexo, Date fechaNacimiento) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDni = tipoDni;
+		this.dni = dni;
+		this.sexo = sexo;
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

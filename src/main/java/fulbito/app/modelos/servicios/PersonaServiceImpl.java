@@ -20,24 +20,41 @@ public class PersonaServiceImpl implements IPersonaService{
 	public List<Persona> listar() {
 
 		return (List<Persona>) personaDao.findAll();
+		
 	}
 
 	@Override
-	public List<Persona> insertar() {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(readOnly=true) // puede omitirse, porque ya la hereda
+	public Persona listarPorId(Long id) {
+		
+		//sino lo encuentra devuelve null
+		return personaDao.findById(id).orElse(null);
+				
 	}
 
 	@Override
-	public List<Persona> borrarPorId() {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Persona guardar(Persona persona) {
+
+		return personaDao.save(persona);
+		
 	}
+	
+	@Override
+	@Transactional
+	public Persona modificar(Persona persona, Long id) {
+		
+		return personaDao.save(persona);
+		
+	}	
 
 	@Override
-	public List<Persona> modificar() {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public void borrar(Long id) {
+		
+		personaDao.deleteById(id);
 	}
+
+
 
 }

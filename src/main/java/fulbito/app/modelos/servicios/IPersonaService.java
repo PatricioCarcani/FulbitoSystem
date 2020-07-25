@@ -8,10 +8,12 @@ public interface IPersonaService {
 	
 	public List<Persona> listar();
 	
-	public List<Persona> insertar();
+	public Persona listarPorId(Long id);
 	
-	public List<Persona> borrarPorId();
+	public Persona guardar(Persona persona);
 	
-	public List<Persona> modificar();
+	public Persona modificar(Persona persona, Long id);
+	
+	public void borrar(Long id);
 
 }
