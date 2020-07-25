@@ -1,8 +1,8 @@
-package fulbito.app.models.services;
+package fulbito.app.modelos.servicios;
 
 import java.util.List;
 
-import fulbito.app.models.entity.Persona;
+import fulbito.app.modelos.entidades.Persona;
 
 public interface IPersonaService {
 	

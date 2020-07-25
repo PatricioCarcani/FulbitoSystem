@@ -1,4 +1,4 @@
-package fulbito.app.controllers;
+package fulbito.app.controladores;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fulbito.app.models.entity.Persona;
-import fulbito.app.models.services.IPersonaService;
+import fulbito.app.modelos.entidades.Persona;
+import fulbito.app.modelos.servicios.IPersonaService;
 
 @RestController
 @RequestMapping("/api")
