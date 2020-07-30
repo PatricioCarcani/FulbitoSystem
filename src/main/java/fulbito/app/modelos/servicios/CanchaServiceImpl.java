@@ -31,7 +31,7 @@ public class CanchaServiceImpl implements ICanchaService{
 		return canchaDao.findById(id).orElse(null);
 				
 	}
-	
+	/*
 	@Override
 	@Transactional
 	public Cancha guardar(Cancha cancha) {
@@ -52,6 +52,7 @@ public class CanchaServiceImpl implements ICanchaService{
 		
 		canchaDao.deleteById(id);
 	}
+	*/
 
 
 }

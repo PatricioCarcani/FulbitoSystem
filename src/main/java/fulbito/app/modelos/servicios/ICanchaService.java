@@ -10,11 +10,11 @@ public interface ICanchaService {
 	
 	public Cancha listarPorId(Long id);
 	
-	public Cancha guardar(Cancha cancha);
+	//public Cancha guardar(Cancha cancha);
 	
-	public Cancha modificar(Cancha cancha, Long id);
+	//public Cancha modificar(Cancha cancha, Long id);
 	
-	public void borrar(Long id);
+	//public void borrar(Long id);
 	
 	
 }

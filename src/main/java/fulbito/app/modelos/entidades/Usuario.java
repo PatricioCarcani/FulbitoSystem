@@ -19,61 +19,75 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//CORREGIR @Column(name="tipo_dni")
-	private int id_persona;
-	//CORREGIR @Column(name="tipo_dni")
-	private String nombre_usuario;
+	//CORREGIR @Column(name="id_persona")
+	private Long idPersona;
+	//CORREGIR @Column(name="nombre_usuario")
+	private String nombreUsuario;
 	private String mail;
 	@Temporal(TemporalType.DATE)
-	//CORREGIR @Column(name="tipo_dni")
-	private Date fecha_ultima_modificacion;
+	@Column(name="fecha_ultima_modificacion")
+	private Date fechaUltimaModificacion;
 	private String password;
-
-	public void setId(Long id) {
-		this.id = id;
+	
+	public Usuario(Long idPersona, String nombreUsuario, String mail, Date fechaUltimaModificacion,
+			String password) {
+		super();
+		this.idPersona = idPersona;
+		this.nombreUsuario = nombreUsuario;
+		this.mail = mail;
+		this.fechaUltimaModificacion = fechaUltimaModificacion;
+		this.password = password;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId_persona(int id_persona) {
-		this.id_persona = id_persona;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getId_persona() {
-		return id_persona;
+	public Long getIdPersona() {
+		return idPersona;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setIdPersona(Long idPersona) {
+		this.idPersona = idPersona;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public String getMail() {
 		return mail;
 	}
 
-	public void setFecha_ultima_modificacion(Date fecha_ultima_modificacion) {
-		this.fecha_ultima_modificacion = fecha_ultima_modificacion;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
-	public Date getFecha_ultima_modificacion() {
-		return fecha_ultima_modificacion;
+	public Date getFechaUltimaModificacion() {
+		return fechaUltimaModificacion;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setFechaUltimaModificacion(Date fechaUltimaModificacion) {
+		this.fechaUltimaModificacion = fechaUltimaModificacion;
 	}
 
 	public String getPassword() {
 		return password;
 	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+
+	
 }
