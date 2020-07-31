@@ -24,6 +24,8 @@ public class Cancha implements Serializable {
 	private String mapa;
 	private String mail;
 	private double precio;
+	
+	public Cancha() {}
 
 	public void setId(Long id) {
 		this.id = id;

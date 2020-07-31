@@ -21,8 +21,7 @@ public class Comando implements Serializable {
 	private String codigo;
 	private String descripcion;
 
-	public Comando() {
-	}
+	public Comando() {}
 
 	public Comando(String codigo, String descripcion) {
 		super();
