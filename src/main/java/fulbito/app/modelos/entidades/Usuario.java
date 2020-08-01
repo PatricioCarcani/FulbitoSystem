@@ -25,9 +25,9 @@ public class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = -56325219821013784L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne(cascade= CascadeType.ALL,targetEntity=Persona.class)
+	@OneToOne(cascade=CascadeType.ALL, targetEntity=Persona.class)
 	@JoinColumn(name="id")
 	private Persona idPersona;
 	@Column(name="nombre_usuario")
