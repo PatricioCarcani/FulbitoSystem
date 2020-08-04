@@ -23,9 +23,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
-
-		registry.enableSimpleBroker("/chat/"); //prefijo para el nombre de los eventos (ej., chat/suscribirse)
-		registry.setApplicationDestinationPrefixes("/app"); //prefijo del destino del mensaje
+	        //prefijo para el nombre de los eventos (ej., chat/suscribirse)
+		registry.enableSimpleBroker("/chat/");
+		//prefijo del destino del mensaje
+		registry.setApplicationDestinationPrefixes("/app"); 
 		
 	}
 	

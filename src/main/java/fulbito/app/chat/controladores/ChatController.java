@@ -18,8 +18,9 @@ public class ChatController {
 	@SendTo("/chat/mensaje")
 	public Mensaje recibeMensaje(Mensaje mensaje) {
 		
-		mensaje.setFecha(new Date().getTime());
-		mensaje.setTexto("Recibido por el broker" + mensaje.getTexto());
+	        mensaje.setUsuario(mensaje.getUsuario());
+		mensaje.setTexto(mensaje.getTexto());
+		System.out.println("Mensaje recibido en el backend");
 		
 		return mensaje;
 		
