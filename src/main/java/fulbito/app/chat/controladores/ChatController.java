@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 import fulbito.app.chat.modelos.entidades.Mensaje;
@@ -17,6 +18,10 @@ public class ChatController {
 
     @Autowired
     private IMensajeService mensajeService;
+    
+    // usado para historial
+    @Autowired
+    private SimpMessagingTemplate websocket;
 
     // tiene el prefijo app/
     @MessageMapping("/mensaje")
@@ -36,14 +41,24 @@ public class ChatController {
 
     }
     
+    @MessageMapping("/historial")
+    public void enviaHistorial(){
+        
+        System.out.println("Mensajes listados");
+        websocket.convertAndSend("/chat/historial", mensajeService.listar());
+        
+    }    
+    
     // cada cliente va a tener una subscripcion al chat historial
     // se puede personalizar por nombre de usuario de ser necesario
+    /*
     @MessageMapping("/historial")
     @SendTo("/chat/historial")
     public List<Mensaje> enviaHistorial(){
         
+        System.out.println("Mensajes listados");
         return mensajeService.listar();
         
-    }
+    }*/
 
 }
