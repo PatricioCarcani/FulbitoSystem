@@ -1,0 +1,292 @@
+:root{
+    --font-principal:'Nirmala';
+    --font-secundaria:'aAntaraDistance';
+}
+/*Query font-face permite importar una fuente local y crearle un nombre*/
+@font-face{
+    font-family: 'aAntaraDistance';
+    src:url(../css/fonts/aAntaraDistance.ttf);
+}
+
+@font-face{
+    font-family: 'Nirmala';
+    src:url(../css/fonts/Nirmala.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-principal);
+    box-sizing: border-box;
+}
+
+body{
+    overflow: hidden;
+    background: url(../css/SVG/background.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+}
+
+
+.principal{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: row;
+    margin-top: 10vh;
+}
+
+.principal-login{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: row;
+    margin-top: 10vh;
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40vw;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.secundario{
+    background-color: #ffffff;
+    order: 2;
+}
+
+.secundario-l{
+    background-color: #ffffff;
+    order: 2;
+}
+
+.secundario > .formulario{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.secundario-l > .formulario-l{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.terciario{
+    background-image: linear-gradient(to bottom, rgba(105,52,255,1), rgba(24,77,181,1));
+    width: 19vw;
+    order: 1;
+}
+
+.terciario-l{
+    background-image: linear-gradient(to bottom, rgba(105,52,255,1), rgba(24,77,181,1));
+    width: 19vw;
+    order: 1;
+}
+
+section > img{
+    width: 8vw;
+}
+
+.formulario input{
+    margin: 1.5vh;
+    width: 18vw;
+    height: 5vh;
+    font-weight: bold;
+    border: 1px solid #EEEEEE;
+    background-color: #F7F7F7;
+    /*Em toma el valor predeterminado de la fuente del body que es 16px. 1em = 16px, 12px = 0.75em*/
+    font-size: 0.80em;
+    color: #8A8A8A;
+    border-radius: 3px 2px 4px 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /*Es la propiedad que define la superposición entre dos elementos, en este caso los inputs estarán al frente
+    y el SVG de simbolos detrás*/
+    z-index: 1;
+    /*Quita el border de los inputs cuando se clickea*/
+    outline: 0px;
+}
+
+.formulario-l input{
+    margin: 1vh;
+    width: 18vw;
+    height: 5vh;
+    font-weight: bold;
+    border: 1px solid #EEEEEE;
+    background-color: #F7F7F7;
+    /*Em toma el valor predeterminado de la fuente del body que es 16px. 1em = 16px, 12px = 0.75em*/
+    font-size: 0.80em;
+    color: #8A8A8A;
+    border-radius: 3px 2px 4px 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /*Es la propiedad que define la superposición entre dos elementos, en este caso los inputs estarán al frente
+    y el SVG de simbolos detrás*/
+    z-index: 1;
+    /*Quita el border de los inputs cuando se clickea*/
+    outline: 0px;
+    position: relative;
+    top: 130px;
+}
+
+.formulario input[type="button"]{
+    width: 18.1vw;
+    margin-top: 2vh;
+    background-color: #ffffff;
+}
+
+.formulario #submit{
+    background-color: #6934E1;
+    border: none;
+    color: #ffffff;
+    position: relative;
+    top: 3px;
+}
+
+.formulario-l #submit{
+    background-color: #6934E1;
+    border: none;
+    color: #ffffff;
+}
+
+
+::placeholder{
+    padding-left: 20px;
+}
+
+header,
+footer{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+header hgroup{
+    position: absolute;
+    top: 5vh;
+}
+
+header .title-subtitle{
+    position: absolute;
+    top: 200px;
+}
+
+header hgroup h1{
+    font-size: 1.9vw;
+    color: #6934E1;
+}
+
+hgroup h2{
+    font-size: 0.75vw;
+    margin-top: -1vw;
+    color: #8A8A8A;
+}
+
+footer h1, a{
+    position: relative;
+    bottom: 12vh;
+    font-size: 15px;
+    font-weight: bold;
+    color: #8A8A8A;
+}
+
+.footer-form #register-now, #violet-link{
+    position: relative;
+    top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #8A8A8A;
+}
+
+a{
+    color: #6934E1;
+    text-decoration: none;
+    padding-left: 4.5px;
+}
+
+#violet-link{
+    color: #6934E1;
+    text-decoration: none;
+    padding-left: 4.5px;
+}
+
+a:hover{
+    color: #4a0ed8;
+}
+
+#cancel:hover{
+    background-color: #6934E1;
+    color:#ffffff;
+}
+
+#submit:hover{
+    background-color: #ffffff;
+    color:#8A8A8A;
+}
+
+header img {
+    position: absolute;
+    width: 10vw;
+    top: -5vh;
+    right: 1vh;
+}
+
+header #simbolos{
+    position: absolute;
+    width: 10vw;
+    top: -7vh;
+    right: 0.5vh;
+}
+
+#player{
+    position: relative;
+    top: 140px;
+    width: 9vw;
+}
+
+.formulario input:hover{
+    border: 1px solid white;
+}
+
+.formulario-l input:hover{
+    border: 1px solid white;
+}
+
+#principal-title{
+    font-family: var(--font-secundaria);
+    color: #6934E1;
+    font-size: 90px;
+    position: absolute;
+    text-align: center;
+    font-weight: 100;
+}
+
+#lost-pass{
+    position: relative;
+    top: 130px;
+}
+
+@media only screen and (width: 1255px){
+    
+}

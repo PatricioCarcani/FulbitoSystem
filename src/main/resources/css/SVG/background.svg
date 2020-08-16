@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2e5cb7"/>
+      <stop offset="1" stop-color="#6027df"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#386dd4" stop-opacity="0.671"/>
+      <stop offset="1" stop-color="#6934e1"/>
+    </linearGradient>
+    <clipPath id="clip-Design_Form_-_WebApp">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Design_Form_-_WebApp" data-name="Design Form - WebApp" clip-path="url(#clip-Design_Form_-_WebApp)">
+    <rect width="1920" height="1080" fill="url(#linear-gradient)"/>
+    <path id="Path_1" data-name="Path 1" d="M4.6,61.574C30.934-77.527,2001.1,5.682,2001.1,5.682L2047.8,640.754h0c-15.122,8.819-7.668,128.423-57.067,125.9-66.574-3.4-192.089-73.433-244.753-53.418-160.451,60.98-259.055,142.77-293.061,151.8-184.866,49.083-290.81-131.595-543.788-280.654-127-74.824-437.912,76.976-623.889,56.37C101.352,620.378,0,485.528,0,485.528L23.676,324.909" transform="translate(-44 -45.5)" fill="url(#linear-gradient-2)"/>
+  </g>
+</svg>

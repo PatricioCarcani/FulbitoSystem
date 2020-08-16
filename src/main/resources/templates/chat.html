@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ES">
+    <head>
+        <title>CHAT</title>
+        <meta charset="UTF8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </head>
+    <body onload="desconectarSesion()">
+        <div>
+            <div>
+                <input type="text" id="from" placeholder="Choose a nickname"/>
+            </div>
+            <br />
+            <div>
+                <button id="conectarSesion" onclick="conectarSesion();">Conectarse</button>
+                <button id="desconectarSesion" disabled="disabled" onclick="desconectarSesion();">
+                    Desconectarse
+                </button>
+            </div>
+            <br />
+            <div id="conversationDiv">
+                <input type="text" id="text" placeholder="Write a message..."/>
+                <button id="enviarMensaje" onclick="enviarMensaje();">Send</button>
+                <p id="response"></p>
+            </div>
+        </div>
+ 
+ 
+        <!-- Librerias Stomp y SockJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+        <script>
+
+        var stompClient = null;
+                        
+        function setConnected(connected) {
+            document.getElementById('conectarSesion').disabled = connected;
+            document.getElementById('desconectarSesion').disabled = !connected;
+            document.getElementById('conversationDiv').style.visibility 
+                = connected ? 'visible' : 'hidden';
+            document.getElementById('response').innerHTML = '';
+        }
+
+        //conectarse por websocket al chat del evento (ver registerStompEndpoints)
+        function conectarSesion(event) {
+
+            var socket = new SockJS('http://localhost:8082/chat-websocket/');
+            stompClient = Stomp.over(socket);
+
+            stompClient.connect({}, function(frame) {
+                    setConnected(true);
+                    console.log('Connected: ' + frame);
+                    // ver @SendTo
+                    stompClient.subscribe('/chat/mensaje', function(mensajeAEnviar) {
+                        mostrarMensajeEnviado(JSON.parse(mensajeAEnviar.body));
+                    });
+                });
+
+        }
+
+        function desconectarSesion() {
+            if(stompClient != null) {
+                stompClient.disconnect();
+            }
+            setConnected(false);
+            console.log("Desconectado del chat");
+        }
+        
+        function enviarMensaje() {
+            var usuario = document.getElementById('from').value;
+            var texto = document.getElementById('text').value;
+            stompClient.send("/app/mensaje", {}, 
+                JSON.stringify({'usuario':usuario, 'texto':texto}));
+        }
+        
+        function mostrarMensajeEnviado(mensajeAEnviar) {
+            var response = document.getElementById('response');
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.appendChild(document.createTextNode(mensajeAEnviar.from + ": " 
+                + mensajeAEnviar.text + " (" + mensajeAEnviar.time + ")"));
+            response.appendChild(p);
+        }
+/*
+        function enviarMensaje(){
+            // hasta aca anda
+            var mensaje = {
+                texto: 'test',
+                fecha: ''
+            };
+            stompClient.send("/app/mensaje", {}, JSON.stringify(mensaje));
+        }*/
+
+
+
+        </script>
+    </body>
+</html>
