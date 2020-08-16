@@ -1,44 +1,60 @@
 <!DOCTYPE html>
 <html lang="ES">
-    <head>
-        <title>CHAT</title>
-        <meta charset="UTF8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    </head>
-    <body onload="desconectarSesion()">
-        <div>
-            <div>
-                <input type="text" id="from" placeholder="Choose a nickname"/>
-            </div>
-            <br />
-            <div>
-                <button id="conectarSesion" onclick="conectarSesion();">Conectarse</button>
-                <button id="desconectarSesion" disabled="disabled" onclick="desconectarSesion();">
-                    Desconectarse
-                </button>
-            </div>
-            <br />
-            <div id="conversationDiv">
-                <input type="text" id="text" placeholder="Write a message..."/>
-                <button id="enviarMensaje" onclick="enviarMensaje();">Send</button>
-                <p id="response"></p>
-            </div>
-        </div>
- 
- 
-        <!-- Librerias Stomp y SockJS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-        <script>
 
+<head>
+    <title>CHAT</title>
+    <meta charset="UTF8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body onload="desconectarSesion()">
+    <div>
+        <div>
+            <input type="text" id="from" placeholder="Choose a nickname" />
+        </div>
+        <br />
+        <div>
+            <button id="conectarSesion" onclick="conectarSesion();">Conectarse</button>
+            <button id="desconectarSesion" disabled="disabled" onclick="desconectarSesion();">
+                Desconectarse
+            </button>
+        </div>
+        <br />
+        <div id="conversationDiv">
+            <input type="text" id="text" placeholder="Write a message..." />
+            <button id="enviarMensaje" onclick="enviarMensaje();">Send</button>
+            <p id="response"></p>
+        </div>
+    </div>
+
+
+    <!-- Librerias Stomp y SockJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script>
+        // variables iniciales
         var stompClient = null;
-                        
+
+        class Mensaje {
+            constructor(usuario, texto) {
+                this.id;
+                this.usuario = usuario;
+                this.texto = texto;
+            }
+        }
+
+        // capturar el html donde se mostrara el historial
+        var responseHistorial = document.getElementById('response');
+        var p = document.createElement('p');
+        p.style.wordWrap = 'break-word';
+
+        // manejar etiquetas HTML al conectarse al chat
         function setConnected(connected) {
             document.getElementById('conectarSesion').disabled = connected;
             document.getElementById('desconectarSesion').disabled = !connected;
-            document.getElementById('conversationDiv').style.visibility 
-                = connected ? 'visible' : 'hidden';
+            document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
             document.getElementById('response').innerHTML = '';
         }
 
@@ -48,52 +64,60 @@
             var socket = new SockJS('http://localhost:8082/chat-websocket/');
             stompClient = Stomp.over(socket);
 
-            stompClient.connect({}, function(frame) {
-                    setConnected(true);
-                    console.log('Connected: ' + frame);
-                    // ver @SendTo
-                    stompClient.subscribe('/chat/mensaje', function(mensajeAEnviar) {
-                        mostrarMensajeEnviado(JSON.parse(mensajeAEnviar.body));
-                    });
+            stompClient.connect({}, function (frame) {
+                setConnected(true);
+                console.log('Connected: ' + frame);
+
+                // ver @SendTo en el backend, esta url tiene que ser igual
+                stompClient.subscribe('/chat/mensaje');
+
+
+                stompClient.subscribe('/chat/historial', function (enviaHistorial) {
+
+                    alert('histoirla');
+
+                    // captura request
+                    const historial = JSON.parse(enviaHistorial.body).content;
+                    
+                    console.log('suscripto a historial');
+                    /*
+                    this.mensaje = historial.map(m => {
+                        return m;
+                        // añadirlo al html
+                        //p.appendChild(document.createTextNode(JSON.stringify({'usuario':usuario, 'texto':texto})));
+                        response.appendChild(p);
+                    })*/
+                    responseHistorial.innerHTML = historial;
                 });
+
+
+
+            });
 
         }
 
         function desconectarSesion() {
-            if(stompClient != null) {
+            if (stompClient != null) {
                 stompClient.disconnect();
             }
             setConnected(false);
             console.log("Desconectado del chat");
         }
-        
+
         function enviarMensaje() {
+
             var usuario = document.getElementById('from').value;
             var texto = document.getElementById('text').value;
-            stompClient.send("/app/mensaje", {}, 
-                JSON.stringify({'usuario':usuario, 'texto':texto}));
+
+            const mensaje = new Mensaje(usuario, texto);
+
+            stompClient.send("/app/mensaje", {},
+                JSON.stringify({
+                    'usuario': mensaje.usuario,
+                    'texto': mensaje.texto
+                }));
         }
-        
-        function mostrarMensajeEnviado(mensajeAEnviar) {
-            var response = document.getElementById('response');
-            var p = document.createElement('p');
-            p.style.wordWrap = 'break-word';
-            p.appendChild(document.createTextNode(mensajeAEnviar.from + ": " 
-                + mensajeAEnviar.text + " (" + mensajeAEnviar.time + ")"));
-            response.appendChild(p);
-        }
-/*
-        function enviarMensaje(){
-            // hasta aca anda
-            var mensaje = {
-                texto: 'test',
-                fecha: ''
-            };
-            stompClient.send("/app/mensaje", {}, JSON.stringify(mensaje));
-        }*/
+    </script>
+</body>
 
-
-
-        </script>
-    </body>
 </html>
