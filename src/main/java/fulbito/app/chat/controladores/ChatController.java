@@ -29,7 +29,7 @@ public class ChatController {
         System.out.println("Mensaje recibido en el backend");
         
         //antes de guardarlo,hacer la verificacion de si el texto empieza con / y ver si es un comando
-        
+        // traer la ista de comandos, guardarla, e iterarla
         mensajeService.guardar(mensaje);
 
         return mensaje;
