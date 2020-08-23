@@ -33,8 +33,15 @@ public class ChatController {
 
         System.out.println("Mensaje recibido en el backend");
         
+        // TODO: SWITCH Y VINCULARLO A UN ARRAY DE LA TABLA COMANDOS-ALGO
+        if( "/cancha".equals(mensaje.getTexto()) ) {
+            // logica de voy a la API y traiga una lista de cancha o una sola o lo que sea
+            mensaje.setUsuario("FulbitoBot");
+            mensaje.setTexto("la cancha que en Paseo Alcorta y Pringles");
+        }
         //antes de guardarlo,hacer la verificacion de si el texto empieza con / y ver si es un comando
         // traer la ista de comandos, guardarla, e iterarla
+        // guardar en BD
         mensajeService.guardar(mensaje);
 
         return mensaje;
@@ -42,10 +49,11 @@ public class ChatController {
     }
     
     @MessageMapping("/historial")
-    public void enviaHistorial(){
+    public void historial(){
         
         System.out.println("Mensajes listados");
-        websocket.convertAndSend("/chat/historial", mensajeService.listar());
+        // ver si se saca la ultima barraen historial/
+        websocket.convertAndSend("/chat/historial/", mensajeService.listar());
         
     }    
     
