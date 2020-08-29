@@ -1,5 +1,6 @@
 package fulbito.app.chat.controladores;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 
 import fulbito.app.chat.modelos.entidades.Mensaje;
 import fulbito.app.chat.modelos.servicios.IMensajeService;
+import fulbito.app.modelos.entidades.Cancha;
+import fulbito.app.modelos.servicios.ICanchaService;
 import fulbito.app.modelos.servicios.IUsuarioService;
 
 @Controller
@@ -18,6 +21,9 @@ public class ChatController {
 
     @Autowired
     private IMensajeService mensajeService;
+    
+    @Autowired
+    private ICanchaService canchaService;
     
     // usado para historial
     @Autowired
@@ -30,19 +36,68 @@ public class ChatController {
     @SendTo("/chat/mensaje")
     public Mensaje recibeMensaje(Mensaje mensaje) {
 
-
         System.out.println("Mensaje recibido en el backend");
+        // se guarda el mensaje original en BD
+        mensajeService.guardar(mensaje);
+        
+        // validador de comandos (textos que empiezan con "@")
+        if(mensaje.getTexto().startsWith("@")) {
+            
+            Mensaje mensajeDeBot = new Mensaje();
+            mensajeDeBot.setUsuario("FulbitoBot");
+            
+            switch(mensaje.getTexto()){ 
+            
+                case "@cancha":
+                    // traer solo la primer cancha (puede mejorarse y traer todas)
+                    Cancha cancha = canchaService.listar().get(0);
+                    // nota: no se puede dejar una linea (ej: \n)                      
+                    mensajeDeBot.setTexto(cancha.getNombre() + " - "
+                            + cancha.getDireccion() + " - "
+                            + "Tel.: " + cancha.getTelefono() + " - "
+                            // probe de usar un iframe pero no lo toma
+                            + "Link mapa: " + cancha.getMapa() + " - "
+                            + "Mail: " + cancha.getMail() + " - "
+                            + "Precio: $" + cancha.getPrecio()
+                            );
+                    break;
+                    
+                case "@plata":  
+                    // traer solo la primer cancha (puede mejorarse y traer todas)
+                    Double precioCancha = canchaService.listar().get(0).getPrecio();
+                    // nota: no se puede dejar una linea (ej: \n)                      
+                    mensajeDeBot.setTexto("$" + precioCancha
+                            // aca abajo se puede agregar la division precio / jugadores confirmados
+                            //+ "Precio: $" + cancha.getPrecio()
+                            );
+                    break;
+                    
+                case "@mapa":  
+                    // traer solo la primer cancha (puede mejorarse y traer todas)
+                    String mapa = canchaService.listar().get(0).getMapa();
+                    // nota: no se puede dejar una linea (ej: \n)                      
+                    mensajeDeBot.setTexto("Link del mapa:" + mapa);
+                    break;                     
+                    
+                case "@fecha":  
+                    mensajeDeBot.setTexto("Se juega el viernes 29 a las 19hs."); 
+                    break;
+                    
+                case "@hora":  
+                    mensajeDeBot.setTexto("Se juega a las 19hs."); 
+                    break;                    
+                    
+                default:   
+                    mensajeDeBot.setTexto("El comando ingresado es incorrecto.");  
+            }
+            
+            mensajeService.guardar(mensajeDeBot);
+            return mensajeDeBot;
+            
+        }
         
         // TODO: SWITCH Y VINCULARLO A UN ARRAY DE LA TABLA COMANDOS-ALGO
-        if( "/cancha".equals(mensaje.getTexto()) ) {
-            // logica de voy a la API y traiga una lista de cancha o una sola o lo que sea
-            mensaje.setUsuario("FulbitoBot");
-            mensaje.setTexto("la cancha que en Paseo Alcorta y Pringles");
-        }
-        //antes de guardarlo,hacer la verificacion de si el texto empieza con / y ver si es un comando
         // traer la ista de comandos, guardarla, e iterarla
-        // guardar en BD
-        mensajeService.guardar(mensaje);
 
         return mensaje;
 

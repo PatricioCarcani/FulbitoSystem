@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fulbito.app.modelos.entidades.Cancha;
+import fulbito.app.modelos.entidades.Persona;
 import fulbito.app.modelos.servicios.ICanchaService;
 
 @RestController
@@ -32,7 +35,11 @@ public class CanchaRestController {
 		return canchaService.listarPorId(id);		
 	}	
 	
-	
+	@PostMapping("/canchas") //es la misma URL de mapeo porque se hace un POST en lugar de un GET
+	@ResponseStatus(HttpStatus.CREATED) //devuelve un response 201
+	public Cancha guardar(@RequestBody Cancha cancha){
+	        return canchaService.guardar(cancha);         
+	}
 	//public Cancha guardar(Cancha cancha);
 	
 	//public Cancha modificar(Cancha cancha, Long id);

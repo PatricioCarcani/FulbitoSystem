@@ -31,14 +31,14 @@ public class CanchaServiceImpl implements ICanchaService{
 		return canchaDao.findById(id).orElse(null);
 				
 	}
-	/*
+	
 	@Override
 	@Transactional
 	public Cancha guardar(Cancha cancha) {
 
 		return canchaDao.save(cancha);	
 	}
-	
+	/*
 	@Override
 	@Transactional
 	public Cancha modificar(Cancha cancha, Long id) {
