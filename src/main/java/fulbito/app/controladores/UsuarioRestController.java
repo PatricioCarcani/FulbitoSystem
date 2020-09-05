@@ -48,7 +48,6 @@ public class UsuarioRestController {
 		// busco y traiga al usuario de la base
 		Usuario usuarioActual = usuarioService.listarPorId(id);
 		// la sobreescribo con los datos recibidos
-		usuarioActual.setIdPersona(usuario.getIdPersona());
 		usuarioActual.setNombreUsuario(usuario.getNombreUsuario());
 		usuarioActual.setMail(usuario.getMail());
 		usuarioActual.setFechaUltimaModificacion(usuario.getFechaUltimaModificacion());

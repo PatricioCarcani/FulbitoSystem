@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fulbito.app.chat.modelos.dao.IMensajeDao;
 import fulbito.app.chat.modelos.entidades.Mensaje;
-import fulbito.app.modelos.dao.IPersonaDao;
-import fulbito.app.modelos.entidades.Persona;
 
 @Service
 public class MensajeServiceImpl implements IMensajeService {

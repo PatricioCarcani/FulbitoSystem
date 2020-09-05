@@ -2,6 +2,7 @@ package fulbito.app.chat.controladores;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import fulbito.app.chat.modelos.entidades.Mensaje;
 import fulbito.app.chat.modelos.servicios.IMensajeService;
 import fulbito.app.modelos.entidades.Cancha;
+import fulbito.app.modelos.entidades.ParticipanteEvento;
 import fulbito.app.modelos.servicios.ICanchaService;
+import fulbito.app.modelos.servicios.IParticipanteEventoService;
 import fulbito.app.modelos.servicios.IUsuarioService;
 
 @Controller
@@ -24,6 +27,9 @@ public class ChatController {
     
     @Autowired
     private ICanchaService canchaService;
+    
+    @Autowired
+    private IParticipanteEventoService participanteEventoService;
     
     // usado para historial
     @Autowired
@@ -85,6 +91,37 @@ public class ChatController {
                     
                 case "@hora":  
                     mensajeDeBot.setTexto("Se juega a las 19hs."); 
+                    break;
+
+                case "@lista":
+                    
+                    System.out.println( "Comando recibido: @lista");
+                    // TODO: QUE NO TRAIGA SOLO EL PRIMER EVENTO, SINO QUE BUSQUE TODOS BAJO EVENTO '1', y luego hacer un foreach o ver
+                    // traer solo la primer cancha (puede mejorarse y traer todas)
+                    List<ParticipanteEvento> todosLosParticipanteEvento = participanteEventoService.listar();
+                    
+                    String resultado = "";
+                    
+                    for ( ParticipanteEvento pe : todosLosParticipanteEvento) {
+                        
+                        // USAR STRINGBUILDER, PORQUE SE GUARDAN UN SOLO TEXTO
+                        if ( pe.getIdEvento() == 1 ) {
+                            
+                            // LISTAR TODOS LOS QUE TENGAN EVENTO 1
+                            // nota: no se puede dejar una linea (ej: \n)                      
+                            // ESTO VA -> mensajeDeBot.setTexto( "Usuario: " + pe.next().getIdUsuario() );
+                            resultado += "Usuario: " + pe.getIdUsuario() + "\n"; // BORRAR
+                            // alternativa si no salen los mapeos to-many: Usuarioservice.getporid(1)
+                            System.out.println( pe.getIdUsuario());
+                            
+                        }
+                        
+                    }
+                    
+                    mensajeDeBot.setTexto(resultado);
+                    
+                    System.out.println( "Fin comando @lista");
+
                     break;                    
                     
                 default:   

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fulbito.app.modelos.entidades.Cancha;
-import fulbito.app.modelos.entidades.Persona;
 import fulbito.app.modelos.servicios.ICanchaService;
 
 @RestController
