@@ -34,21 +34,17 @@ public class Evento implements Serializable {
 	private Date fechaEvento;
 	@Column(name = "esta_activo")
 	private Boolean estaActivo;
-	@Column(name = "alarma_fecha")
-	private String alarmaFecha;
 	
 	
 	public Evento() {}
 
-	public Evento(String nombreEvento, Long idCancha, Long idUsuarioCreador, Date fechaEvento, Boolean estaActivo,
-			String alarmaFecha) {
+	public Evento(String nombreEvento, Long idCancha, Long idUsuarioCreador, Date fechaEvento, Boolean estaActivo) {
 		super();
 		this.nombreEvento = nombreEvento;
 		this.idCancha = idCancha;
 		this.idUsuarioCreador = idUsuarioCreador;
 		this.fechaEvento = fechaEvento;
 		this.estaActivo = estaActivo;
-		this.alarmaFecha = alarmaFecha;
 	}
 	
 

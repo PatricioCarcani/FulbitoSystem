@@ -15,6 +15,7 @@ import fulbito.app.chat.modelos.entidades.Mensaje;
 import fulbito.app.chat.modelos.servicios.IMensajeService;
 import fulbito.app.modelos.entidades.Cancha;
 import fulbito.app.modelos.entidades.ParticipanteEvento;
+import fulbito.app.modelos.entidades.Usuario;
 import fulbito.app.modelos.servicios.ICanchaService;
 import fulbito.app.modelos.servicios.IParticipanteEventoService;
 import fulbito.app.modelos.servicios.IUsuarioService;
@@ -99,7 +100,7 @@ public class ChatController {
                     // TODO: QUE NO TRAIGA SOLO EL PRIMER EVENTO, SINO QUE BUSQUE TODOS BAJO EVENTO '1', y luego hacer un foreach o ver
                     // traer solo la primer cancha (puede mejorarse y traer todas)
                     List<ParticipanteEvento> todosLosParticipanteEvento = participanteEventoService.listar();
-                    
+                    System.out.println("LOS TRAJO BIEN");
                     String resultado = "";
                     
                     for ( ParticipanteEvento pe : todosLosParticipanteEvento) {
@@ -109,10 +110,8 @@ public class ChatController {
                             
                             // LISTAR TODOS LOS QUE TENGAN EVENTO 1
                             // nota: no se puede dejar una linea (ej: \n)                      
-                            // ESTO VA -> mensajeDeBot.setTexto( "Usuario: " + pe.next().getIdUsuario() );
-                            resultado += "Usuario: " + pe.getIdUsuario() + "\n"; // BORRAR
-                            // alternativa si no salen los mapeos to-many: Usuarioservice.getporid(1)
-                            System.out.println( pe.getIdUsuario());
+                            resultado += "✅" + pe.getUsuario().getNombreUsuario() + " "; // BORRAR
+                            System.out.println( pe.getUsuario().getNombreUsuario());
                             
                         }
                         
@@ -122,6 +121,27 @@ public class ChatController {
                     
                     System.out.println( "Fin comando @lista");
 
+                    break; 
+                    
+                case "@mesumo":  
+                    System.out.println( "Comando recibido: @mesumo");
+                    
+                    // aca se supone que va a leer los datos del usuario actual LOGUEADO, asi que: TODO despues del login
+                    Usuario usuario = new Usuario();
+                    // fecha y hora ahora
+                    usuario.setNombreUsuario("nombreHardcodeado");
+                    usuario.setMail("mailtrucho@aaa.com");
+                    usuario.setFechaUltimaModificacion(new Date());
+                    usuario.setPassword("test");
+                    
+                    ParticipanteEvento participanteEvento = new ParticipanteEvento();
+                    // hardocodeado para usar siempre el mismo evento
+                    participanteEvento.setIdEvento(1L);
+                    // idem, lo toma del usuario arriba
+                    participanteEvento.setUsuario(usuario);
+                    participanteEventoService.guardar(participanteEvento);
+                    
+                    mensajeDeBot.setTexto("Felicitaciones por anotarte " + usuario.getNombreUsuario() + ", vas a jugar!" ); 
                     break;                    
                     
                 default:   
