@@ -142,7 +142,17 @@ public class ChatController {
                     participanteEventoService.guardar(participanteEvento);
                     
                     mensajeDeBot.setTexto("Felicitaciones por anotarte " + usuario.getNombreUsuario() + ", vas a jugar!" ); 
-                    break;                    
+                    break;    
+                    
+                case "@mebajo":  
+                    System.out.println( "Comando recibido: @mebajo");
+                    
+                    // harcodeado, en realidad tiene que buscar en BD tu usuario y ponerlo como parametro
+                    // BORRA POR EL ID, Y ESTA PERFECTO! ACLARACION: NO BORRA EL ID_EVENTO O UD_USUARIO, QUIZAS HAYA QUE AGREGARLE ESTA LOGICA
+                    participanteEventoService.borrar(18L);
+                    
+                    mensajeDeBot.setTexto("Te diste de baja, ya no vas a jugar!" ); 
+                    break;                      
                     
                 default:   
                     mensajeDeBot.setTexto("El comando ingresado es incorrecto.");  

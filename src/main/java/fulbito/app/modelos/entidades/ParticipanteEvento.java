@@ -46,9 +46,12 @@ public class ParticipanteEvento implements Serializable {
     //id_usuario"
     private Usuario idUsuario;   
     */
-    @MapsId
-    @OneToOne
-    @JoinColumn(name = "id_usuario")    
+    
+    /** funciona y graba
+     */
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario", nullable = true)    
     //@PrimaryKeyJoinColumn
     private Usuario usuario;
     

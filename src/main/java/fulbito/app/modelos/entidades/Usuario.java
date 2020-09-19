@@ -46,7 +46,7 @@ public class Usuario implements Serializable {
     // --------------------------------------------
 
     // VINCULO COMO FK DE PART.EVENTO
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     //@PrimaryKeyJoinColumn    
     private ParticipanteEvento participanteEvento;
 
