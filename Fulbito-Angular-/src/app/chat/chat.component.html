@@ -1,0 +1,30 @@
+<div class="card mx-4 my-4">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item mr-2">
+                <button class="btn btn-success" type="button" (click)="conectar()" *ngIf="!conectado">Conectar</button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-warning" type="button" (click)="desconectar()" *ngIf="conectado">Cerrar chat</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body" style="overflow-y: scroll; height:360px;"
+    *ngIf="conectado"
+    >
+<ul class="list-group">
+    <li class="list-group-item list-group-item-light" *ngFor="let mensaje of mensajes">
+        <span>{{mensaje.usuario}} | {{mensaje.texto}}</span>
+    </li>
+</ul></div>
+
+    <div class="card-footer" *ngIf="conectado">
+        <form class="form-inline">
+            <div class="form-group mx-3">
+                <input type="text" [(ngModel)]="mensaje.texto" class="form-control" placeholder="Envia un mensaje..." name="texto">
+            </div>
+            <button class="btn btn-primary" type="submit" (click)="enviarMensaje()">Enviar</button>
+        </form>
+    </div>
+</div>

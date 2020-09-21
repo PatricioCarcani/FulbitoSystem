@@ -1,3 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
 :root{
     --font-principal:'Nirmala';
     --font-secundaria:'aAntaraDistance';
@@ -5,12 +6,12 @@
 /*Query font-face permite importar una fuente local y crearle un nombre*/
 @font-face{
     font-family: 'aAntaraDistance';
-    src:url(../css/fonts/aAntaraDistance.ttf);
+    src:url(../src/app/styles/fonts/aAntaraDistance.ttf);
 }
 
 @font-face{
     font-family: 'Nirmala';
-    src:url(../css/fonts/Nirmala.ttf);
+    src:url(../src/app/styles/fonts/Nirmala.ttf);
 }
 
 
@@ -23,7 +24,7 @@
 
 body{
     overflow: hidden;
-    background: url(../css/SVG/background.svg);
+    background: url(../src/app/styles/SVG/background.svg);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-attachment: fixed;
@@ -185,7 +186,7 @@ footer{
     text-align: center;
 }
 
-header hgroup{
+header div{
     position: absolute;
     top: 7vh;
 }
@@ -205,13 +206,15 @@ header .title-subtitle{
     top: 220px;
 }
 
-header hgroup h1{
+header div h1{
     font-size: 1.8vw;
     color: #6934E1;
+    font-weight: 1000;
 }
 
-hgroup h2{
+div h2{
     font-size: 0.75vw;
+    font-weight: 1000;
     margin-top: -1vw;
     color: #8A8A8A;
 }
@@ -353,12 +356,12 @@ header #simbolos{
         display: none;
     }
 
-    header > .title-subtitle > h1 {
+    header > div > .title-subtitle > h1 {
         font-size: 8vw;
         bottom: 50px;
     }
     
-    header > .title-subtitle > h2 {
+    header > div > .title-subtitle > h2 {
         font-size: 4vw;
         bottom: 67px
     }

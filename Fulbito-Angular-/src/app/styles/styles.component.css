@@ -5,12 +5,12 @@
 /*Query font-face permite importar una fuente local y crearle un nombre*/
 @font-face{
     font-family: 'aAntaraDistance';
-    src:url(../css/fonts/aAntaraDistance.ttf);
+    src:url(../styles/fonts/aAntaraDistance.ttf);
 }
 
 @font-face{
     font-family: 'Nirmala';
-    src:url(../css/fonts/Nirmala.ttf);
+    src:url(../styles/fonts/Nirmala.ttf);
 }
 
 
@@ -23,7 +23,7 @@
 
 body{
     overflow: hidden;
-    background: url(../css/SVG/background.svg);
+    background: url(../styles/SVG/background.svg);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-attachment: fixed;
