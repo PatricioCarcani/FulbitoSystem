@@ -1,0 +1,29 @@
+<svg id="Symbols" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192.01" height="239.434" viewBox="0 0 192.01 239.434">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#6934e1" stop-opacity="0.949"/>
+      <stop offset="1" stop-color="#184db5" stop-opacity="0.949"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.5" x2="0.875" y2="0.315" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#6934e1" stop-opacity="0.949"/>
+      <stop offset="1" stop-color="#184db5" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#184db5" stop-opacity="0.949"/>
+      <stop offset="1" stop-color="#6934e1" stop-opacity="0.949"/>
+    </linearGradient>
+  </defs>
+  <circle id="Ellipse_9" data-name="Ellipse 9" cx="15.5" cy="15.5" r="15.5" transform="translate(85 66.931)" fill="url(#linear-gradient)"/>
+  <circle id="Ellipse_10" data-name="Ellipse 10" cx="15.5" cy="15.5" r="15.5" transform="translate(120 158.931)" fill="url(#linear-gradient)"/>
+  <rect id="Rectangle_7" data-name="Rectangle 7" width="50" height="12" rx="6" transform="translate(120.969 53.27) rotate(-45)" fill="url(#linear-gradient)"/>
+  <rect id="Rectangle_11" data-name="Rectangle 11" width="42" height="6" rx="3" transform="translate(72.069 223.655) rotate(-45)" fill="url(#linear-gradient-4)"/>
+  <rect id="Rectangle_12" data-name="Rectangle 12" width="42" height="6" rx="3" transform="translate(72.069 168.655) rotate(-45)" fill="url(#linear-gradient-4)"/>
+  <rect id="Rectangle_13" data-name="Rectangle 13" width="54" height="11" rx="5.5" transform="translate(34.049 136.604) rotate(-45)" fill="url(#linear-gradient-4)"/>
+  <rect id="Rectangle_14" data-name="Rectangle 14" width="54" height="11" rx="5.5" transform="translate(146.049 152.604) rotate(-45)" fill="url(#linear-gradient-4)"/>
+  <path id="Path_96" data-name="Path 96" d="M1160,435.069c19.767,0,0,28.434,0,28.434S1140.233,435.069,1160,435.069Z" transform="translate(-1008 -224.069)" fill="url(#linear-gradient-8)"/>
+  <path id="Path_98" data-name="Path 98" d="M1160,435.069c19.767,0,0,28.434,0,28.434S1140.233,435.069,1160,435.069Z" transform="translate(-1075 -435.069)" fill="url(#linear-gradient-8)"/>
+  <path id="Path_97" data-name="Path 97" d="M1160,435.069c19.767,0,0,28.434,0,28.434S1140.233,435.069,1160,435.069Z" transform="translate(-1000 -359.069)" fill="url(#linear-gradient-8)"/>
+  <path id="Polygon_1" data-name="Polygon 1" d="M6,0l6,10H0Z" transform="translate(41 42.931)" fill="url(#linear-gradient-8)"/>
+  <path id="Polygon_2" data-name="Polygon 2" d="M9.428,4.287a3,3,0,0,1,5.145,0l6.7,11.169A3,3,0,0,1,18.7,20H5.3a3,3,0,0,1-2.572-4.543Z" transform="translate(0 84.931)" fill="url(#linear-gradient-8)"/>
+  <path id="Polygon_3" data-name="Polygon 3" d="M9.428,4.287a3,3,0,0,1,5.145,0l6.7,11.169A3,3,0,0,1,18.7,20H5.3a3,3,0,0,1-2.572-4.543Z" transform="translate(116 107.931)" fill="url(#linear-gradient-8)"/>
+</svg>
