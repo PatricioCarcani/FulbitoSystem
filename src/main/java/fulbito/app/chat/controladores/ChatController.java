@@ -152,7 +152,28 @@ public class ChatController {
                     participanteEventoService.borrar(18L);
                     
                     mensajeDeBot.setTexto("Te diste de baja, ya no vas a jugar!" ); 
-                    break;                      
+                    break; 
+                    
+                case "@ayuda":  
+                    System.out.println( "Comando recibido: @ayuda");
+                    
+                    // harcodeado, en realidad tiene que buscar en BD tu usuario y ponerlo como parametro
+                    // BORRA POR EL ID, Y ESTA PERFECTO! ACLARACION: NO BORRA EL ID_EVENTO O UD_USUARIO, QUIZAS HAYA QUE AGREGARLE ESTA LOGICA
+                    //HARDCODEAR
+                    
+                    String comandos = "";
+                    comandos = "@cancha : muestra toda la información de la cancha | " + 
+                               "@mapa : muestra mapa de la cancha | " + 
+                               "@plata : muestra precio de la cancha | " + 
+                               "@fecha : fecha del partido | " + 
+                               "@hora : muestra horario del evento | " + 
+                               "@lista : lista numerada de participantes, con id de jugador y nombre | " + 
+                               "@mesumo : se agrega el jugador a la lista del evento | " + 
+                               "@mebajo : se elimina a el jugador de la lista del evento | " + 
+                               "@ayuda : listado de comandos disponibles";                
+                                        
+                    mensajeDeBot.setTexto(comandos); 
+                    break;                        
                     
                 default:   
                     mensajeDeBot.setTexto("El comando ingresado es incorrecto.");  
