@@ -4,7 +4,7 @@ import java.util.List;
 
 import fulbito.app.modelos.entidades.Cancha;
 
-public interface ICanchaService {
+public interface CanchaService {
 	
 	public List<Cancha> listar();
 	

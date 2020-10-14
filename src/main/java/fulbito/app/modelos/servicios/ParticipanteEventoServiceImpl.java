@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fulbito.app.modelos.dao.IParticipanteEventoDao;
-import fulbito.app.modelos.dao.IUsuarioDao;
 import fulbito.app.modelos.entidades.ParticipanteEvento;
 import fulbito.app.modelos.entidades.Usuario;
+import fulbito.app.modelos.repository.ParticipanteEventoRepository;
+import fulbito.app.modelos.repository.UsuarioRepository;
 
 @Service
-public class ParticipanteEventoServiceImpl implements IParticipanteEventoService {
+public class ParticipanteEventoServiceImpl implements ParticipanteEventoService {
 
 	@Autowired
-	private IParticipanteEventoDao participanteEventoDao;
+	private ParticipanteEventoRepository participanteEventoDao;
 	
 	@Override
 	@Transactional(readOnly=true) // puede omitirse, porque ya la hereda

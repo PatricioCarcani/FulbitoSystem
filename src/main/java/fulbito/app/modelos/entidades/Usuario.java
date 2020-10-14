@@ -6,16 +6,17 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -46,69 +47,16 @@ public class Usuario implements Serializable {
     // --------------------------------------------
 
     // VINCULO COMO FK DE PART.EVENTO
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     //@PrimaryKeyJoinColumn    
-    private ParticipanteEvento participanteEvento;
-
-    public ParticipanteEvento getParticipanteEvento() {
-        return participanteEvento;
-    }
-
-    public void setParticipanteEvento(ParticipanteEvento participanteEvento) {
-        this.participanteEvento = participanteEvento;
-    }
-
-    // ------------------------------------------------------------
-
-    public Usuario() {
-    }
-
-    public Usuario(String nombreUsuario, String mail, Date fechaUltimaModificacion, String password) {
-        super();
-        this.nombreUsuario = nombreUsuario;
-        this.mail = mail;
-        this.fechaUltimaModificacion = fechaUltimaModificacion;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public Date getFechaUltimaModificacion() {
-        return fechaUltimaModificacion;
-    }
-
-    public void setFechaUltimaModificacion(Date fechaUltimaModificacion) {
-        this.fechaUltimaModificacion = fechaUltimaModificacion;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    private ParticipanteEvento participanteEvento;
+//
+//    public ParticipanteEvento getParticipanteEvento() {
+//        return participanteEvento;
+//    }
+//
+//    public void setParticipanteEvento(ParticipanteEvento participanteEvento) {
+//        this.participanteEvento = participanteEvento;
+//    }
 
 }

@@ -12,6 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "evento")
 public class Evento implements Serializable {
@@ -35,65 +38,4 @@ public class Evento implements Serializable {
 	@Column(name = "esta_activo")
 	private Boolean estaActivo;
 	
-	
-	public Evento() {}
-
-	public Evento(String nombreEvento, Long idCancha, Long idUsuarioCreador, Date fechaEvento, Boolean estaActivo) {
-		super();
-		this.nombreEvento = nombreEvento;
-		this.idCancha = idCancha;
-		this.idUsuarioCreador = idUsuarioCreador;
-		this.fechaEvento = fechaEvento;
-		this.estaActivo = estaActivo;
-	}
-	
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getid() {
-		return id;
-	}
-
-	public void setnombreEvento(String nombreEvento) {
-		this.nombreEvento = nombreEvento;
-	}
-
-	public String getnombreEvento() {
-		return nombreEvento;
-	}
-
-	public void setidcancha(Long idCancha) {
-		this.idCancha = idCancha;
-	}
-
-	public Long getidCancha() {
-		return idCancha;
-	}
-
-	public void setidUsuarioCreador(Long idUsuarioCreador) {
-		this.idUsuarioCreador = idUsuarioCreador;
-	}
-
-	public Long getidUsuarioCreador() {
-		return idUsuarioCreador;
-	}
-
-	public void setfechaEvento(Date fechaEvento) {
-		this.fechaEvento = fechaEvento;
-	}
-
-	public Date getfechaEvento() {
-		return fechaEvento;
-	}
-
-	public void setestaActivo(Boolean estaActivo) {
-		this.estaActivo = estaActivo;
-	}
-
-	public Boolean getestaActivo() {
-		return estaActivo;
-	}
-
 }

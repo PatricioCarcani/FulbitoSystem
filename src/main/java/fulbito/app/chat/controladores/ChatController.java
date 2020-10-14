@@ -16,9 +16,9 @@ import fulbito.app.chat.modelos.servicios.IMensajeService;
 import fulbito.app.modelos.entidades.Cancha;
 import fulbito.app.modelos.entidades.ParticipanteEvento;
 import fulbito.app.modelos.entidades.Usuario;
-import fulbito.app.modelos.servicios.ICanchaService;
-import fulbito.app.modelos.servicios.IParticipanteEventoService;
-import fulbito.app.modelos.servicios.IUsuarioService;
+import fulbito.app.modelos.servicios.CanchaService;
+import fulbito.app.modelos.servicios.ParticipanteEventoService;
+import fulbito.app.modelos.servicios.UsuarioService;
 
 @Controller
 public class ChatController {
@@ -27,10 +27,10 @@ public class ChatController {
     private IMensajeService mensajeService;
     
     @Autowired
-    private ICanchaService canchaService;
+    private CanchaService canchaService;
     
     @Autowired
-    private IParticipanteEventoService participanteEventoService;
+    private ParticipanteEventoService participanteEventoService;
     
     // usado para historial
     @Autowired

@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fulbito.app.modelos.dao.IUsuarioDao;
 import fulbito.app.modelos.entidades.Usuario;
+import fulbito.app.modelos.repository.UsuarioRepository;
 
 @Service
-public class UsuarioServiceImpl implements IUsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
-	private IUsuarioDao usuarioDao;
+	private UsuarioRepository usuarioDao;
 	
 	@Override
 	@Transactional(readOnly=true) // puede omitirse, porque ya la hereda

@@ -3,7 +3,7 @@ package fulbito.app.modelos.servicios;
 import java.util.List;
 import fulbito.app.modelos.entidades.Usuario;
 
-public interface IUsuarioService {
+public interface UsuarioService {
 
 	// SELECT...
 	public List<Usuario> listar();

@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fulbito.app.modelos.dao.ICanchaDao;
 import fulbito.app.modelos.entidades.Cancha;
+import fulbito.app.modelos.repository.CanchaRepository;
 
 @Service
-public class CanchaServiceImpl implements ICanchaService{
+public class CanchaServiceImpl implements CanchaService{
 
 	@Autowired
-	private ICanchaDao canchaDao;
+	private CanchaRepository canchaDao;
 	
 	@Override
 	@Transactional(readOnly=true)

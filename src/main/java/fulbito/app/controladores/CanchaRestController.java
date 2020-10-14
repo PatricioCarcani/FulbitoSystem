@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fulbito.app.modelos.entidades.Cancha;
-import fulbito.app.modelos.servicios.ICanchaService;
+import fulbito.app.modelos.servicios.CanchaService;
 
 @RestController
 @RequestMapping("/api")
 public class CanchaRestController {
 	
 	@Autowired
-	private ICanchaService canchaService;
+	private CanchaService canchaService;
 	
 	@GetMapping("/canchas")
 	public List<Cancha> listar(){

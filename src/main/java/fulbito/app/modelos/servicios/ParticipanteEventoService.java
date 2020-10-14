@@ -4,7 +4,7 @@ import java.util.List;
 
 import fulbito.app.modelos.entidades.ParticipanteEvento;
 
-public interface IParticipanteEventoService {
+public interface ParticipanteEventoService {
 
 	// SELECT...
 	public List<ParticipanteEvento> listar();

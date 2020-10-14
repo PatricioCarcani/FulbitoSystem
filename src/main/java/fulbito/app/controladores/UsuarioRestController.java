@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fulbito.app.modelos.entidades.Usuario;
-import fulbito.app.modelos.servicios.IUsuarioService;
+import fulbito.app.modelos.servicios.UsuarioService;
 
 @RestController
 @RequestMapping("/api")
 public class UsuarioRestController {
 	
 	@Autowired
-	private IUsuarioService usuarioService;
+	private UsuarioService usuarioService;
 	
 	@GetMapping("/usuarios")
 	public List<Usuario> listar(){

@@ -16,6 +16,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "participante_evento")
 public class ParticipanteEvento implements Serializable {
@@ -55,24 +58,7 @@ public class ParticipanteEvento implements Serializable {
     //@PrimaryKeyJoinColumn
     private Usuario usuario;
     
-    public ParticipanteEvento() {
-    }
-
-    public Long getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(Long idEvento) {
-        this.idEvento = idEvento;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+    
 
    
     
